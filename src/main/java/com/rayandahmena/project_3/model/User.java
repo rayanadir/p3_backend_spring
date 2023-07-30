@@ -10,13 +10,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 255)
+    @Column(name="email" ,nullable = false, unique = true, length = 255)
     private String email;
 
     @Column(name = "name", nullable = false,length = 255)
     private String name;
 
-    @Column(nullable = false, length = 255)
+    @Column(name="password",nullable = false, length = 255)
     private String password;
 
     public Long getId() {
