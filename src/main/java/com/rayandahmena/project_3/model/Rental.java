@@ -1,6 +1,8 @@
 package com.rayandahmena.project_3.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+
 @Entity
 @Table(name="RENTALS")
 public class Rental {
@@ -27,13 +29,17 @@ public class Rental {
     @Column(name="owner_id", nullable = false)
     private int owner_id;
 
+    @Column(name="created_at")
+    private Timestamp created_at;
+
+    @Column(name="updated_at")
+    private Timestamp updated_at;
+
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) { this.id = id; }
 
     public String getName() {
         return name;
