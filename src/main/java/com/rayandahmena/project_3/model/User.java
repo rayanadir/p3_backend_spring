@@ -8,7 +8,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name="email" ,nullable = false, unique = true, length = 255)
     private String email;
@@ -19,11 +19,11 @@ public class User {
     @Column(name="password",nullable = false, length = 255)
     private String password;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

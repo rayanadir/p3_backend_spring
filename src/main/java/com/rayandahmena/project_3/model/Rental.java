@@ -7,7 +7,7 @@ public class Rental {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name = "name",nullable = false, unique = true, length = 255)
     private String name;
@@ -27,11 +27,11 @@ public class Rental {
     @Column(name="owner_id", nullable = false)
     private int owner_id;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
