@@ -1,4 +1,4 @@
-package com.rayandahmena.project_3.model;
+package com.rayandahmena.project_3.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

@@ -1,24 +1,24 @@
-package com.rayandahmena.project_3.model;
+package com.rayandahmena.project_3.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="USERS")
-public class User {
+@Table(name="MESSAGES")
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="email" ,nullable = false, unique = true, length = 255)
-    private String email;
+    @Column(name="rental_id")
+    private int rental_id;
 
-    @Column(name = "name", nullable = false,length = 255)
-    private String name;
+    @Column(name="user_id")
+    private int user_id;
 
-    @Column(name="password",nullable = false, length = 255)
-    private String password;
+    @Column(name="message", length = 2000)
+    private String message;
 
     @Column(name="created_at")
     private Timestamp created_at;
@@ -34,28 +34,28 @@ public class User {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public int getRental_id() {
+        return rental_id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRental_id(int rental_id) {
+        this.rental_id = rental_id;
     }
 
-    public String getName() {
-        return name;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMessage() {
+        return message;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Timestamp getCreated_at() { return created_at; }
