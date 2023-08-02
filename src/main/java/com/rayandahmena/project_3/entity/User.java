@@ -2,6 +2,7 @@ package com.rayandahmena.project_3.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name="USERS")
@@ -25,6 +26,8 @@ public class User {
 
     @Column(name="updated_at")
     private Timestamp updated_at;
+
+    private Set<Role> roles;
 
     public int getId() {
         return id;
@@ -66,4 +69,7 @@ public class User {
 
     public void setUpdated_at(Timestamp updated_at) { this.updated_at = updated_at; }
 
+    public Set<Role> getRoles() { return roles; }
+
+    public void setRoles(Set<Role> roles) { this.roles= roles; }
 }
