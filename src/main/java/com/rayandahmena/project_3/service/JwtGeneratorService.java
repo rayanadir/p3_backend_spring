@@ -6,14 +6,15 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.Map;
 import io.jsonwebtoken.Jwts;
+
+import static com.rayandahmena.project_3.constants.Constants.EXPIRATION_TIME;
 
 @Service
 public class JwtGeneratorService implements JwtGeneratorInterface {
     @Override
     public String generateToken(User user){
-        return Jwts.builder().setSubject(user.getEmail()).setIssuedAt(new Date())
+        return Jwts.builder().setSubject(user.getEmail()).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS256, "secret").compact();
     }
 }
