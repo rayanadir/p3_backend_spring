@@ -1,5 +1,6 @@
 package com.rayandahmena.project_3.configuration;
 
+import com.rayandahmena.project_3.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,21 +14,21 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    UserService userService;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/owner").hasRole("OWNER")
-                .requestMatchers("/tenant").hasRole("TENANT")
+                .requestMatchers("/api/auth/login").permitAll()
+                .requestMatchers("/api/auth/register").permitAll()
+                .requestMatchers("/api/**").authenticated()
                 .anyRequest()
-                .authenticated());
+                .authenticated()).formLogin((form) ->form.loginPage("/login").permitAll());
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication()
-            .withUser("owneruser").password(passwordEncoder().encode("owner123")).roles("OWNER")
-            .and()
-            .withUser("tenantuser").password(passwordEncoder().encode("tenant123")).roles("TENANT");
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
