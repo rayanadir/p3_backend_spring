@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
 
 @Entity
 @Table(name="USERS")
@@ -31,8 +30,6 @@ public class User implements UserDetails {
 
     @Column(name="updated_at")
     private Timestamp updated_at;
-
-    private Set<Role> roles;
 
     public int getId() {
         return id;
@@ -74,9 +71,6 @@ public class User implements UserDetails {
 
     public void setUpdated_at(Timestamp updated_at) { this.updated_at = updated_at; }
 
-    public Set<Role> getRoles() { return roles; }
-
-    public void setRoles(Set<Role> roles) { this.roles= roles; }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
