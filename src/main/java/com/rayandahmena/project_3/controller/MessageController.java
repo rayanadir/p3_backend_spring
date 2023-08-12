@@ -11,6 +11,7 @@ import com.rayandahmena.project_3.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +31,7 @@ public class MessageController {
     private RentalService rentalService;
 
     @RequestMapping(value="/messages", method = RequestMethod.POST)
-    public ResponseEntity<HashMap<String,String>> sendMessage(NewMessageRequest newMessageReq, Authentication auth){
+    public ResponseEntity<HashMap<String,String>> sendMessage(@RequestBody NewMessageRequest newMessageReq, Authentication auth){
         User user = userService.findById(newMessageReq.getUser_id());
         // If different user id, forbid authorization
         if(!Objects.equals(userService.findByEmail(auth.getName()).getId(), user.getId())){
