@@ -1,8 +1,11 @@
 package com.rayandahmena.project_3.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Data
 @Entity
 @Table(name="MESSAGES")
 public class Message {
