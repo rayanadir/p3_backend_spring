@@ -1,6 +1,7 @@
 package com.rayandahmena.project_3.controller;
 
 import com.rayandahmena.project_3.dto.LoginDTO;
+import com.rayandahmena.project_3.dto.TokenDTO;
 import com.rayandahmena.project_3.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,9 @@ public class LoginController {
     LoginService loginService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ResponseEntity<String> login(@RequestBody LoginDTO dto){
-        return ResponseEntity.ok(loginService.login(dto));
+    public ResponseEntity<TokenDTO> login(@RequestBody LoginDTO dto){
+        TokenDTO token = new TokenDTO();
+        token.setToken(loginService.login(dto));
+        return ResponseEntity.ok(token);
     }
 }
