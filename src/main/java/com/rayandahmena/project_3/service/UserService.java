@@ -41,6 +41,10 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmail(email);
     }
 
+    public User findById(int id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Error ! User not found"));
+    }
+
     public Integer getUserId(Authentication auth){
         return getUserByEmail(auth.getName()).get().getId();
     }
