@@ -1,8 +1,12 @@
 package com.rayandahmena.project_3.entity;
 
+import com.rayandahmena.project_3.entity.request.NewRentalRequest;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Data
 @Entity
 @Table(name="RENTALS")
 public class Rental {
@@ -15,10 +19,10 @@ public class Rental {
     private String name;
 
     @Column(name = "surface")
-    private Number surface;
+    private int surface;
 
     @Column(name = "price")
-    private Number price;
+    private int price;
 
     @Column(name="picture", length = 255)
     private String picture;
@@ -35,6 +39,16 @@ public class Rental {
     @Column(name="updated_at")
     private Timestamp updated_at;
 
+
+    public Rental(NewRentalRequest rentalRequest, int owner_id){
+        this.name = rentalRequest.getName();
+        this.surface = rentalRequest.getSurface();
+        this.price = rentalRequest.getPrice();
+        this.picture = rentalRequest.getPicture();
+        this.description = rentalRequest.getDescription();
+        this.owner_id = owner_id;
+    }
+
     public int getId() {
         return id;
     }
@@ -49,19 +63,19 @@ public class Rental {
         this.name = name;
     }
 
-    public Number getSurface() {
+    public int getSurface() {
         return surface;
     }
 
-    public void setSurface(Number surface) {
+    public void setSurface(int surface) {
         this.surface = surface;
     }
 
-    public Number getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Number price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
