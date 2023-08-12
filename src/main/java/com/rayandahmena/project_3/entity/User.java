@@ -1,5 +1,6 @@
 package com.rayandahmena.project_3.entity;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,6 +9,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Data
 @Entity
 @Table(name="USERS")
 public class User implements UserDetails {
