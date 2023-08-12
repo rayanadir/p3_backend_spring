@@ -1,7 +1,6 @@
 package com.rayandahmena.project_3.controller;
 
 import com.rayandahmena.project_3.dto.MessageDTO;
-import com.rayandahmena.project_3.entity.Message;
 import com.rayandahmena.project_3.entity.Rental;
 import com.rayandahmena.project_3.entity.User;
 import com.rayandahmena.project_3.entity.request.NewMessageRequest;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Objects;
 
