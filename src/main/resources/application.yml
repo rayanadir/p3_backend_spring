@@ -13,7 +13,7 @@ spring:
             hibernate:
                     format_sql: true
     mvc:
-        pathmatch:
+        path-match:
             matching-strategy: ant_path_matcher
 jwt:
     secret:
@@ -21,3 +21,13 @@ jwt:
     expiration: 1000*60*15
     token-prefix: "Bearer "
     header-string: "Authorization"
+
+server:
+    port: 8080
+    forward-headers-strategy: framework
+
+spring-doc:
+    swagger-ui:
+        path: "/api/swagger-ui.html"
+        config-url: "/api/v3/api-docs/swagger-config"
+        url: "/api/v3/api-docs"
