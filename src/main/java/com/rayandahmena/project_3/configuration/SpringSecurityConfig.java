@@ -1,10 +1,10 @@
 package com.rayandahmena.project_3.configuration;
 
 import com.rayandahmena.project_3.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,8 +27,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
             "/api/swagger-ui.html",
             "/api/webjars/**",
             // -- Swagger UI v3 (OpenAPI)
-            "/api/v3/api-docs/**",
-            "/api/swagger-ui/**"
+            "/v3/api-docs/**",
+            "/swagger-ui/**"
             // other public endpoints of your API may be appended to this array
     };
 
@@ -42,6 +42,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers("/api/**").authenticated()
                 .anyRequest().authenticated();
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/api/swagger-ui/**","/api/v3/api-docs/**");
     }
 
     @Override
