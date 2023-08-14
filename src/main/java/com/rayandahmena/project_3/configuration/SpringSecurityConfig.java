@@ -17,6 +17,21 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private static final String[] AUTH_WHITELIST = {
+            // -- Swagger UI v2
+            "/api/v2/api-docs",
+            "/api/swagger-resources",
+            "/api/swagger-resources/**",
+            "/api/configuration/ui",
+            "/api/configuration/security",
+            "/api/swagger-ui.html",
+            "/api/webjars/**",
+            // -- Swagger UI v3 (OpenAPI)
+            "/api/v3/api-docs/**",
+            "/api/swagger-ui/**"
+            // other public endpoints of your API may be appended to this array
+    };
+
     UserService userService;
 
     @Override
@@ -24,6 +39,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeHttpRequests()
                 .antMatchers("/api/auth/login").permitAll()
                 .antMatchers("/api/auth/register").permitAll()
+                .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers("/api/**").authenticated()
                 .anyRequest().authenticated();
     }
