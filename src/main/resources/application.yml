@@ -28,6 +28,5 @@ server:
 
 spring-doc:
     swagger-ui:
-        path: "/api/swagger-ui.html"
-        config-url: "/api/v3/api-docs/swagger-config"
-        url: "/api/v3/api-docs"
+        config-url: "/v3/api-docs/swagger-config"
+        url: "/v3/api-docs"
