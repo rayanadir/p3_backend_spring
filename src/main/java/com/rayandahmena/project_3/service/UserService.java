@@ -50,16 +50,13 @@ public class UserService implements UserDetailsService {
     }
 
     public User createNewUser(User user){
-        if(!checkExistingEmail(user)){
-            return userRepository.save(user);
-        }
-        return null;
+        return userRepository.save(user);
     }
 
-    public boolean checkExistingEmail(User user){
+    public boolean isEmailAvailable(User user){
         String email = user.getEmail();
         User newUser =  userRepository.findByEmail(email);
-        // if new user email already exists
-        return newUser != null;
+        // if new user email doesn't exist
+        return newUser == null;
     }
 }
