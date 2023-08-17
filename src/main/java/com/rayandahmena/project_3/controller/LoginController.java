@@ -1,15 +1,10 @@
 package com.rayandahmena.project_3.controller;
 
 import com.rayandahmena.project_3.dto.LoginDTO;
-import com.rayandahmena.project_3.dto.TokenDTO;
 import com.rayandahmena.project_3.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path="/api/auth")
@@ -19,9 +14,7 @@ public class LoginController {
     LoginService loginService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ResponseEntity<TokenDTO> login(@RequestBody LoginDTO dto){
-        TokenDTO token = new TokenDTO();
-        token.setToken(loginService.login(dto));
-        return ResponseEntity.ok(token);
+    public ResponseEntity<String> login(@RequestBody LoginDTO dto){
+        return ResponseEntity.ok(loginService.login(dto));
     }
 }
