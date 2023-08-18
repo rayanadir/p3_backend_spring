@@ -7,6 +7,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+
 @Service
 public class LoginService {
 
@@ -19,11 +21,18 @@ public class LoginService {
     @Autowired
     AuthenticationManager authenticationManager;
 
-    public String login(LoginDTO dto){
+    public HashMap<String,String> login(LoginDTO dto){
         String email= dto.getEmail();
         String password = dto.getPassword();
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password));
         User user = userService.findByEmail(email);
-        return jwtGeneratorService.generateToken(user);
+        String token = jwtGeneratorService.generateToken(user);
+        HashMap<String,String> res = new HashMap<>();
+        if(token!=""){
+            res.put("token",token);
+        }else if(token==null || token==""){
+            res.put("message","error");
+        }
+        return res;
     }
 }

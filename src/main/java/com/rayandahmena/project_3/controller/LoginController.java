@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping(path="/api/auth")
 public class LoginController {
@@ -14,7 +16,7 @@ public class LoginController {
     LoginService loginService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ResponseEntity<String> login(@RequestBody LoginDTO dto){
+    public ResponseEntity<HashMap<String,String>> login(@RequestBody LoginDTO dto){
         return ResponseEntity.ok(loginService.login(dto));
     }
 }
