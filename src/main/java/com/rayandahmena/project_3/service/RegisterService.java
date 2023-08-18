@@ -8,6 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+
 @Service
 public class RegisterService {
 
@@ -23,16 +25,16 @@ public class RegisterService {
     @Autowired
     UserRepository userRepository;
 
-    public String register(RegisterDTO dto){
+    public HashMap<String,String> register(RegisterDTO dto){
         User user = new User();
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        HashMap<String,String> res = new HashMap<>();
         if(userService.isEmailAvailable(user)){
             userService.createNewUser(user);
-            return jwtGeneratorService.generateToken(user);
-        }else{
-            return "Email already exists !";
+            res.put("token", jwtGeneratorService.generateToken(user));
         }
+        return res;
     }
 }
