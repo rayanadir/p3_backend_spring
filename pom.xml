@@ -14,7 +14,7 @@
 	<name>project_3</name>
 	<description>Project 3</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 		<!--<spring-security.version>6.0.11</spring-security.version>-->
 	</properties>
 	<dependencies>
