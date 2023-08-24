@@ -12,6 +12,7 @@ import io.jsonwebtoken.Jwts;
 import static com.rayandahmena.project_3.constants.Constants.EXPIRATION_TIME;
 import static com.rayandahmena.project_3.constants.Constants.SECRET;
 
+
 @Service
 public class JwtGeneratorService implements JwtGeneratorInterface {
     @Override
