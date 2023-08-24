@@ -7,10 +7,13 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -19,10 +22,13 @@ import java.util.Date;
 import static com.rayandahmena.project_3.constants.Constants.HEADER_STRING;
 import static com.rayandahmena.project_3.constants.Constants.TOKEN_PREFIX;
 
+@Component
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
+    @Autowired
     JwtGeneratorService jwtGeneratorService;
 
+    @Autowired
     UserService userService;
 
     @Override
