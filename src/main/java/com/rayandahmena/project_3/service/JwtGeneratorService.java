@@ -17,7 +17,7 @@ public class JwtGeneratorService implements JwtGeneratorInterface {
     @Override
     public String generateToken(User user){
         return Jwts.builder().setSubject(user.getEmail()).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(SignatureAlgorithm.HS256, "secret").compact();
+                .signWith(SignatureAlgorithm.HS256, SECRET).compact();
     }
 
     public Claims getClaims(String token){
