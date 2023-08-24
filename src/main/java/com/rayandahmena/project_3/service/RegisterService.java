@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 
 @Service
@@ -30,6 +31,8 @@ public class RegisterService {
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setCreated_at(new Timestamp(System.currentTimeMillis()));
+        user.setUpdated_at(new Timestamp(System.currentTimeMillis()));
         HashMap<String,String> res = new HashMap<>();
         if(userService.isEmailAvailable(user)){
             userService.createNewUser(user);
