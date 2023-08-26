@@ -40,14 +40,14 @@ public class Rental {
     private Timestamp updated_at;
 
 
-    public Rental(NewRentalRequest rentalRequest, int owner_id){
+    /*public Rental(NewRentalRequest rentalRequest, int owner_id){
         this.name = rentalRequest.getName();
         this.surface = rentalRequest.getSurface();
         this.price = rentalRequest.getPrice();
         this.picture = rentalRequest.getPicture();
         this.description = rentalRequest.getDescription();
         this.owner_id = owner_id;
-    }
+    }*/
 
     public int getId() {
         return id;
