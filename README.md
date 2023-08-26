@@ -42,4 +42,4 @@ CREATE DATABASE your_database_name;
 ```
 
 ## API Documentation
-* Swagger link: http://localhost:8080/swagger-ui/index.html
+* Swagger link: http://localhost:3001/swagger-ui/index.html
