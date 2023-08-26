@@ -16,8 +16,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<UserResponse> getUser(@PathVariable int id){
+    public UserResponse getUser(@PathVariable int id){
         User user = userService.findById(id);
-        return ResponseEntity.ok(new UserResponse(user));
+        return new UserResponse(user);
     }
 }
