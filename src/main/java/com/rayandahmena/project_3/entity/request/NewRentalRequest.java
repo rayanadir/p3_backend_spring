@@ -1,5 +1,7 @@
 package com.rayandahmena.project_3.entity.request;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class NewRentalRequest {
     private String name;
 
@@ -7,7 +9,7 @@ public class NewRentalRequest {
 
     private int price;
 
-    private String picture;
+    private MultipartFile picture;
 
     private String description;
 
@@ -23,15 +25,17 @@ public class NewRentalRequest {
         return surface;
     }
 
+    public void setSurface(int surface) { this.surface = surface; }
+
     public int getPrice() {
         return price;
     }
 
-    public String getPicture() {
+    public MultipartFile getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(MultipartFile picture) {
         this.picture = picture;
     }
 
