@@ -26,18 +26,17 @@ public class RegisterService {
     @Autowired
     UserRepository userRepository;
 
-    public HashMap<String,String> register(RegisterDTO dto){
+    public String register(RegisterDTO dto){
         User user = new User();
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         user.setCreated_at(new Timestamp(System.currentTimeMillis()));
         user.setUpdated_at(new Timestamp(System.currentTimeMillis()));
-        HashMap<String,String> res = new HashMap<>();
         if(userService.isEmailAvailable(user)){
             userService.createNewUser(user);
-            res.put("token", jwtGeneratorService.generateToken(user));
+            return jwtGeneratorService.generateToken(user);
         }
-        return res;
+        return null;
     }
 }
