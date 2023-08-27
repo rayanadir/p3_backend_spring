@@ -1,8 +1,5 @@
 package com.rayandahmena.project_3.dto;
 
-import com.rayandahmena.project_3.entity.Rental;
-import com.rayandahmena.project_3.entity.User;
-
 import java.sql.Timestamp;
 
 public class MessageDTO {
@@ -18,7 +15,7 @@ public class MessageDTO {
 
     private Timestamp updated_at;
 
-    public MessageDTO(String message, int userId, int rentalId){
+    public MessageDTO(int rentalId,int userId,String message){
         this.message = message;
         this.user_id = userId;
         this.rental_id = rentalId;
