@@ -1,6 +1,5 @@
 package com.rayandahmena.project_3.entity;
 
-import com.rayandahmena.project_3.dto.MessageDTO;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -30,10 +29,8 @@ public class Message {
     @Column(name="updated_at")
     private Timestamp updated_at;
 
-    public Message(MessageDTO messageDTO){
-        this.message = messageDTO.getMessage();
-        this.user_id = messageDTO.getUser_id();
-        this.rental_id = messageDTO.getRental_id();
+    public Message(){
+
     }
 
     public int getId() {
