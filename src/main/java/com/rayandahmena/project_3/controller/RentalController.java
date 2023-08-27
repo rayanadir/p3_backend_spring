@@ -5,6 +5,8 @@ import com.rayandahmena.project_3.dto.RentalDTO;
 import com.rayandahmena.project_3.entity.Rental;
 import com.rayandahmena.project_3.entity.User;
 import com.rayandahmena.project_3.entity.request.NewRentalRequest;
+import com.rayandahmena.project_3.entity.response.RentalResponse;
+import com.rayandahmena.project_3.entity.response.RentalsResponse;
 import com.rayandahmena.project_3.service.RentalService;
 import com.rayandahmena.project_3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,29 +34,22 @@ public class RentalController {
     private UserService userService;
 
     @RequestMapping(value = "/rentals/{id}", method = RequestMethod.GET)
-    public ResponseEntity<RentalDTO> getRental(@PathVariable int id){
-        return ResponseEntity.ok(new RentalDTO(rentalService.getRental(id)));
+    public RentalDTO getRental(@PathVariable int id){
+        return new RentalDTO(rentalService.getRental(id));
     }
 
     @RequestMapping(value = "/rentals", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, List<RentalDTO>>> getAllRentals(){
-        List<Rental> rentals = new ArrayList<>(rentalService.getAllRentals());
-        Map<String, List<RentalDTO>> result = new HashMap<>();
-        List<RentalDTO> rentalDTOList = rentals.stream().map(rental -> new RentalDTO(rental)).collect(Collectors.toList());
-        result.put("rentals",rentalDTOList);
-        return ResponseEntity.ok(result);
+    public RentalsResponse getAllRentals(){
+        return new RentalsResponse(rentalService.getAllRentals());
     }
 
     @RequestMapping(value = "/rentals", method = RequestMethod.POST)
-    public ResponseEntity<HashMap<String,String>> createRental(NewRentalRequest newRentalReq) throws IOException {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findByEmail(authentication.getName());
-        int ownerId = user.getId();
-        return ResponseEntity.ok(rentalService.createRental(newRentalReq, ownerId));
+    public RentalResponse createRental(NewRentalRequest newRentalReq) throws IOException {
+        return rentalService.createRental(newRentalReq);
     }
 
     @RequestMapping(value = "/rentals/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<HashMap<String,String>> updateRental(@PathVariable int id, NewRentalRequest newRentalReq){
-        return ResponseEntity.ok(rentalService.updateRental(id,newRentalReq));
+    public RentalResponse updateRental(@PathVariable int id, NewRentalRequest newRentalReq){
+        return rentalService.updateRental(id,newRentalReq);
     }
 }
