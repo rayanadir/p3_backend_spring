@@ -21,18 +21,15 @@ public class LoginService {
     @Autowired
     AuthenticationManager authenticationManager;
 
-    public HashMap<String,String> login(LoginDTO dto){
+    public String login(LoginDTO dto){
         String email= dto.getEmail();
         String password = dto.getPassword();
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password));
         User user = userService.findByEmail(email);
         String token = jwtGeneratorService.generateToken(user);
-        HashMap<String,String> res = new HashMap<>();
         if(token!=""){
-            res.put("token",token);
-        }else if(token==null || token==""){
-            res.put("message","error");
+            return token;
         }
-        return res;
+        return null;
     }
 }
