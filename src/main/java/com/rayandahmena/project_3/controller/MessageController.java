@@ -5,6 +5,7 @@ import com.rayandahmena.project_3.entity.response.MessageResponse;
 import com.rayandahmena.project_3.service.MessageService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -24,7 +25,7 @@ public class MessageController {
     @Operation(summary = "Send message")
     @ApiResponses(value = {
             @ApiResponse(
-                    responseCode = "200", description = "Message successfully sent",
+                    responseCode = "200", description = "OK",
                     content = {
                             @Content(
                                     mediaType = "application/json",
@@ -33,10 +34,12 @@ public class MessageController {
                     }
             ),
             @ApiResponse(
-                    responseCode = "400", description = "Message not sent", content = @Content
+                    responseCode = "400", description = "Bad request",
+                    content = { @Content(mediaType = "application/json",examples = @ExampleObject(value="{}")) }
             ),
             @ApiResponse(
-                    responseCode = "401", description = "Message not sent", content = @Content
+                    responseCode = "401", description = "Unauthorized",
+                    content = { @Content(examples = @ExampleObject(value="")) }
             )
     })
     @RequestMapping(value="/messages", method = RequestMethod.POST)

@@ -5,6 +5,7 @@ import com.rayandahmena.project_3.entity.response.TokenResponse;
 import com.rayandahmena.project_3.service.LoginService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -22,7 +23,7 @@ public class LoginController {
     @Operation(summary = "Login user by email & password")
     @ApiResponses(value = {
             @ApiResponse(
-                    responseCode = "200", description = "Successful login",
+                    responseCode = "200", description = "OK",
                     content = {
                             @Content(
                                     mediaType = "application/json",
@@ -31,7 +32,13 @@ public class LoginController {
                     }
             ),
             @ApiResponse(
-                    responseCode = "401", description = "Login failed", content = @Content
+                    responseCode = "401", description = "Unauthorized",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    examples = @ExampleObject(value = "{\"message\" : \"error\"}")
+                            )
+                    }
             )
     })
     @RequestMapping(value = "/login",method = RequestMethod.POST)

@@ -6,6 +6,7 @@ import com.rayandahmena.project_3.entity.response.TokenResponse;
 import com.rayandahmena.project_3.service.RegisterService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -24,7 +25,7 @@ public class RegisterController {
     @Operation(summary = "Register user by name, email & password")
     @ApiResponses(value = {
             @ApiResponse(
-                    responseCode = "200", description = "Successful register",
+                    responseCode = "200", description = "OK",
                     content = {
                             @Content(
                                     mediaType = "application/json",
@@ -33,7 +34,8 @@ public class RegisterController {
                     }
             ),
             @ApiResponse(
-                    responseCode = "400", description = "Register failed", content = @Content
+                    responseCode = "400", description = "Bad request",
+                    content = { @Content(mediaType = "application/json",examples = @ExampleObject(value="{}")) }
             )
     })
     @RequestMapping(value = "/register",method = RequestMethod.POST)

@@ -5,6 +5,7 @@ import com.rayandahmena.project_3.entity.response.UserResponse;
 import com.rayandahmena.project_3.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -25,7 +26,7 @@ public class MeController {
     @Operation(summary = "Get user info")
     @ApiResponses(value = {
             @ApiResponse(
-                    responseCode = "200", description = "Get user info with success",
+                    responseCode = "200", description = "OK",
                     content = {
                             @Content(
                                     mediaType = "application/json",
@@ -34,7 +35,10 @@ public class MeController {
                     }
             ),
             @ApiResponse(
-                    responseCode = "401", description = "Error", content = @Content
+                    responseCode = "401", description = "Unauthorized",
+                    content = {
+                            @Content(mediaType = "application/json",examples = @ExampleObject(value="{}"))
+                    }
             )
     })
     @RequestMapping(value="/auth/me", method = RequestMethod.GET)
