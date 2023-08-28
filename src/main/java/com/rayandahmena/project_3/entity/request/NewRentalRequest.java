@@ -31,6 +31,8 @@ public class NewRentalRequest {
         return price;
     }
 
+    public void setPrice(int price){ this.price = price; }
+
     public MultipartFile getPicture() {
         return picture;
     }
@@ -42,4 +44,6 @@ public class NewRentalRequest {
     public String getDescription() {
         return description;
     }
+
+    public void setDescription(String description) { this.description= description; }
 }
