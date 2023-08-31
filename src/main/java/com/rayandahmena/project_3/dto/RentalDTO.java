@@ -34,6 +34,7 @@ public class RentalDTO {
         this.owner_id = rental.getOwner_id();
         this.created_at = rental.getCreated_at();
         this.updated_at = rental.getUpdated_at();
+        this.picture = rental.getPicture();
     }
 
     public int getId() { return id; }
