@@ -49,7 +49,7 @@ public class RentalService {
 
         String pictureName = imageService.loadImage(rentalReq.getPicture());
         String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
-        String picture = baseUrl + "/images/" + pictureName;
+        String picture = baseUrl + "/" + pictureName;
         Rental rental = new Rental();
         rental.setName(rentalReq.getName());
         rental.setSurface(rentalReq.getSurface());
