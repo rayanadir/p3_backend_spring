@@ -9,14 +9,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Objects;
 
 @Service
 public class ImageService {
 
     public String loadImage(MultipartFile file) throws IOException{
-        String path = "images";
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        System.out.println("Current absolute path is: " + s);
+        String path = "static";
         Path uploadPath = Paths.get(path);
 
         if (!Files.exists(uploadPath)) {
