@@ -1,10 +1,12 @@
 package com.rayandahmena.project_3.service;
 
+import com.rayandahmena.project_3.entity.Image;
 import com.rayandahmena.project_3.entity.Rental;
 import com.rayandahmena.project_3.entity.User;
 import com.rayandahmena.project_3.entity.request.NewRentalRequest;
 import com.rayandahmena.project_3.entity.response.RentalResponse;
 import com.rayandahmena.project_3.repository.RentalsRepository;
+import com.rayandahmena.project_3.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.core.Authentication;
@@ -25,6 +27,9 @@ public class RentalService {
 
     @Autowired
     private RentalsRepository rentalsRepository;
+
+    @Autowired
+    private ImageRepository imageRepository;
 
     @Autowired
     private ImageService imageService;
@@ -50,17 +55,22 @@ public class RentalService {
         String pictureName = imageService.loadImage(rentalReq.getPicture());
         String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         String picture = baseUrl + "/" + pictureName;
+        Image image = new Image();
+
         Rental rental = new Rental();
         rental.setName(rentalReq.getName());
         rental.setSurface(rentalReq.getSurface());
         rental.setPrice(rentalReq.getPrice());
         rental.setPicture(picture);
+        image.setUrl(picture);
         rental.setDescription(rentalReq.getDescription());
         rental.setOwner_id(ownerId);
         rental.setCreated_at(new Timestamp(System.currentTimeMillis()));
         rental.setUpdated_at(new Timestamp(System.currentTimeMillis()));
+
         if(rental!=null){
             rentalsRepository.save(rental);
+            imageRepository.save(image);
             return new RentalResponse("Rental created !");
         }
         return null;
