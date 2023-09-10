@@ -40,6 +40,17 @@ mvn spring-boot:run
 ``` SQL
 CREATE DATABASE your_database_name;
 ```
+Run the following commands in this [file](https://github.com/OpenClassrooms-Student-Center/Developpez-le-back-end-en-utilisant-Java-et-Spring/blob/main/ressources/sql/script.sql) to create tables
 
 ## API Documentation
 * Swagger link: http://localhost:3001/swagger-ui/index.html
+
+## Client repository
+* Run the following commands to install the client :
+```
+git fork https://github.com/OpenClassrooms-Student-Center/Developpez-le-back-end-en-utilisant-Java-et-Spring
+```
+
+```
+git clone your__forked_github_repository
+```
