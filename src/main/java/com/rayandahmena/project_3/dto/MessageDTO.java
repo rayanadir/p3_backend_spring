@@ -2,6 +2,9 @@ package com.rayandahmena.project_3.dto;
 
 import java.sql.Timestamp;
 
+/**
+ * MessageDTO class
+ */
 public class MessageDTO {
     private int id;
 

@@ -13,6 +13,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * User entity class
+ */
 @Data
 @Entity
 @Table(name="USERS")

@@ -7,6 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
+/**
+ * Message entity class
+ */
 @Data
 @Entity
 @Table(name="MESSAGES")

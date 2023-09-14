@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * Class that handles "Rentals" controller
+ */
 @RestController
 @RequestMapping("api")
 public class RentalController {
@@ -29,6 +32,11 @@ public class RentalController {
     private UserService userService;
 
 
+    /**
+     * Get a single rental by id
+     * @param id id of the rental
+     * @return RentalDTO
+     */
     @Operation(summary = "Get a single rental data by id")
     @ApiResponses(value = {
             @ApiResponse(
@@ -52,6 +60,10 @@ public class RentalController {
         return new RentalDTO(rentalService.getRental(id));
     }
 
+    /**
+     * Get all rentals
+     * @return RentalsResponse
+     */
     @Operation(summary = "Get all rentals")
     @ApiResponses(value = {
             @ApiResponse(
@@ -77,6 +89,12 @@ public class RentalController {
         return new RentalsResponse(rentalService.getAllRentals());
     }
 
+    /**
+     * Create a rental
+     * @param newRentalReq Object that contains rental request attributes
+     * @return RentalResponse
+     * @throws IOException
+     */
     @Operation(summary = "Create a rental")
     @ApiResponses(value = {
             @ApiResponse(
@@ -102,6 +120,12 @@ public class RentalController {
         return rentalService.createRental(newRentalReq);
     }
 
+    /**
+     * Update a rental by its id
+     * @param id id of the rental to update
+     * @param newRentalReq Object that contains rental request attributes
+     * @return RentalResponse
+     */
     @Operation(summary = "Update a rental by id")
     @ApiResponses(value = {
             @ApiResponse(

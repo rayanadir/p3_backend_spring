@@ -13,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+/**
+ * Class that handles "Login" controller
+ */
 @RestController
 @RequestMapping(path="/api/auth")
 public class LoginController {
@@ -20,6 +23,11 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
+    /**
+     * Login method controller
+     * @param dto Object that contains login credentials
+     * @return TokenResponse
+     */
     @Operation(summary = "Login user by email & password")
     @ApiResponses(value = {
             @ApiResponse(

@@ -15,13 +15,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-
+/**
+ * Class that handles "Register" controller
+ */
 @RestController
 @RequestMapping(path = "api/auth")
 public class RegisterController {
     @Autowired
     RegisterService registerService;
 
+    /**
+     * Register, create an account
+     * @param dto Object that contains register credentials
+     * @return TokenResponse
+     */
     @Operation(summary = "Register user by name, email & password")
     @ApiResponses(value = {
             @ApiResponse(

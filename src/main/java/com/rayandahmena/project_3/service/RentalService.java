@@ -20,8 +20,9 @@ import java.util.List;
 import java.util.Objects;
 
 
-
-
+/**
+ * Class that handles rental methods
+ */
 @Service
 public class RentalService {
 
@@ -37,16 +38,31 @@ public class RentalService {
     @Autowired
     private UserService userService;
 
+    /**
+     * Get a single rental
+     * @param id id of the rental
+     * @return Rental
+     */
     public Rental getRental(int id){
         return rentalsRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Error ! Rental not found : " + id)
         );
     }
 
+    /**
+     * Get all rentals
+     * @return List of rentals
+     */
     public List<Rental> getAllRentals(){
         return rentalsRepository.findAll();
     }
 
+    /**
+     * Create a rental
+     * @param rentalReq Object that contains rental request attributes
+     * @return RentalResponse
+     * @throws IOException
+     */
     public RentalResponse createRental(NewRentalRequest rentalReq) throws IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByEmail(authentication.getName());
@@ -77,6 +93,12 @@ public class RentalService {
 
     }
 
+    /**
+     * Update a rental by its id
+     * @param id id of the rental to update
+     * @param newRentalReq Object that contains rental request attributes
+     * @return RentalResponse
+     */
     public RentalResponse updateRental(int id,NewRentalRequest newRentalReq){
         Rental rental = getRental(id);
         int ownerId = rental.getOwner_id();

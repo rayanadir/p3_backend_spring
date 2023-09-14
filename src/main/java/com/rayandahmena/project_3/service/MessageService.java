@@ -14,12 +14,20 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 
 
+/**
+ * Class that handles messages
+ */
 @Service
 public class MessageService {
 
     @Autowired
     private MessageRepository messageRepository;
 
+    /**
+     * Send a message
+     * @param messageReq takes message attributes as parameters
+     * @return saves message into messageRepository
+     */
     public Message newMessage(NewMessageRequest messageReq){
         Message message = new Message();
         message.setMessage(messageReq.getMessage());

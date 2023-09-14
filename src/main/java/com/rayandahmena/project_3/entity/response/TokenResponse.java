@@ -1,5 +1,8 @@
 package com.rayandahmena.project_3.entity.response;
 
+/**
+ * Token response class
+ */
 public class TokenResponse {
     private String token;
 

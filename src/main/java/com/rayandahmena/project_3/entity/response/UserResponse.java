@@ -5,6 +5,9 @@ import com.rayandahmena.project_3.entity.User;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
+/**
+ * User response class
+ */
 public class UserResponse {
     private int id;
 

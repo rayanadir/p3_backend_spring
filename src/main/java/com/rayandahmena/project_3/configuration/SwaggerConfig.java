@@ -6,10 +6,17 @@ import io.swagger.v3.oas.models.OpenAPI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Class that handles Swagger
+ */
 @OpenAPIDefinition
 @Configuration
 public class SwaggerConfig {
 
+    /**
+     * Configure Swagger Title, Description & Version
+     * @return OpenAPI
+     */
     @Bean
     public OpenAPI openAPI(){
         return new OpenAPI().info(new Info()

@@ -1,5 +1,8 @@
 package com.rayandahmena.project_3.entity.request;
 
+/**
+ * New message request class
+ */
 public class NewMessageRequest {
 
     private String message;

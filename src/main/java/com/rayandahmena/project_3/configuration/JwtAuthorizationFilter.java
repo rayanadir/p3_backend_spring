@@ -22,6 +22,9 @@ import java.util.Date;
 import static com.rayandahmena.project_3.constants.Constants.HEADER_STRING;
 import static com.rayandahmena.project_3.constants.Constants.TOKEN_PREFIX;
 
+/**
+ * Class that handles JWT Authorization Filter
+ */
 @Component
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
@@ -31,6 +34,14 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     @Autowired
     UserService userService;
 
+    /**
+     * Set authentication token by user context, does filter with http request & response
+     * @param req
+     * @param res
+     * @param filterChain
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
         if(SecurityContextHolder.getContext().getAuthentication() == null){

@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Class that handles "User" controller
+ */
 @RestController
 @RequestMapping("api")
 public class UserController {
@@ -24,6 +27,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Get user information
+     * @param id id of the user
+     * @return UserResponse
+     */
     @Operation(summary = "Get user info")
     @ApiResponses(value = {
             @ApiResponse(

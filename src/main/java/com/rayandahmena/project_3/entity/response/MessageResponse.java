@@ -1,5 +1,8 @@
 package com.rayandahmena.project_3.entity.response;
 
+/**
+ * Message response class
+ */
 public class MessageResponse {
 
     private String message;

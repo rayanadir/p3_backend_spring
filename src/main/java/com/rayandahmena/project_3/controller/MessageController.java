@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Class that handles "Message" controller
+ */
 @RestController
 @RequestMapping("api")
 public class MessageController {
@@ -22,6 +25,11 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
+    /**
+     * Send a message
+     * @param newMessageReq Object that contains message request attributes
+     * @return Message response
+     */
     @Operation(summary = "Send message")
     @ApiResponses(value = {
             @ApiResponse(

@@ -1,5 +1,8 @@
 package com.rayandahmena.project_3.dto;
 
+/**
+ * LoginDTO class
+ */
 public class LoginDTO {
     private String email;
     private String password;

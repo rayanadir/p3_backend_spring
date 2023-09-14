@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 
+/**
+ * Class that handles Login feature
+ */
 @Service
 public class LoginService {
 
@@ -21,6 +24,11 @@ public class LoginService {
     @Autowired
     AuthenticationManager authenticationManager;
 
+    /**
+     * Login method, returns user logged token
+     * @param dto Object that contains login credentials
+     * @return String (token)
+     */
     public String login(LoginDTO dto){
         String email= dto.getEmail();
         String password = dto.getPassword();

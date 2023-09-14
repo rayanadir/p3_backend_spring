@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.sql.Timestamp;
 import java.util.HashMap;
 
+/**
+ * Class that handles Register feature
+ */
 @Service
 public class RegisterService {
 
@@ -26,6 +29,11 @@ public class RegisterService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * Register method, returns user registered token
+     * @param dto Object that contains register credentials
+     * @return String (token)
+     */
     public String register(RegisterDTO dto){
         User user = new User();
         user.setName(dto.getName());

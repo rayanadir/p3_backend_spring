@@ -4,6 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**
+ * Image entity class
+ */
 @Data
 @Entity
 @Table(name="LOCATION")

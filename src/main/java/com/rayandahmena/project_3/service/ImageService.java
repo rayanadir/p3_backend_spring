@@ -11,13 +11,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+/**
+ * Class that handles images
+ */
 @Service
 public class ImageService {
 
+    /**
+     * Loads an image, takes a file as a param
+     * @param file
+     * @return String (file name)
+     * @throws IOException
+     */
     public String loadImage(MultipartFile file) throws IOException{
-        Path currentRelativePath = Paths.get("");
-        String s = currentRelativePath.toAbsolutePath().toString();
-        System.out.println("Current absolute path is: " + s);
         String path = "static";
         Path uploadPath = Paths.get(path);
 
@@ -25,9 +31,11 @@ public class ImageService {
             Files.createDirectories(uploadPath);
         }
 
+        // Original file as string
         String initialFile = Objects.requireNonNull(file.getOriginalFilename());
         String fileName = StringUtils.cleanPath(initialFile);
 
+        // Convert string picture to file
         File pictureFile = new File(path + "/" + fileName);
         file.transferTo(pictureFile.toPath());
 

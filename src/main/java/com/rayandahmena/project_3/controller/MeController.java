@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Class that handles "Me" controller
+ */
 @RestController
 @RequestMapping("api")
 public class MeController {
@@ -23,6 +26,10 @@ public class MeController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Get user information while connected
+     * @return UserResponse
+     */
     @Operation(summary = "Get user info")
     @ApiResponses(value = {
             @ApiResponse(

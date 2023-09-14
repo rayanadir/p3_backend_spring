@@ -8,6 +8,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
+/**
+ * Rental entity class
+ */
 @Data
 @Entity
 @Table(name="RENTALS")

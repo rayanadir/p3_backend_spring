@@ -2,6 +2,9 @@ package com.rayandahmena.project_3.entity.request;
 
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * New rental request class
+ */
 public class NewRentalRequest {
     private String name;
 

@@ -5,6 +5,9 @@ import com.rayandahmena.project_3.entity.Rental;
 
 import java.sql.Timestamp;
 
+/**
+ * RentalDTO class
+ */
 public class RentalDTO {
 
     private int id;

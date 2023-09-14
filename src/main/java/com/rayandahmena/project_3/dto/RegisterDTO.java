@@ -1,5 +1,8 @@
 package com.rayandahmena.project_3.dto;
 
+/**
+ * RegisterDTO class
+ */
 public class RegisterDTO {
     private String name;
     private String email;

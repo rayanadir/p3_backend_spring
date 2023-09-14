@@ -4,6 +4,9 @@ import com.rayandahmena.project_3.entity.Rental;
 
 import java.util.List;
 
+/**
+ * Rentals response class
+ */
 public class RentalsResponse {
 
     private List<Rental> rentals;
