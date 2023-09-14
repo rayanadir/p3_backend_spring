@@ -43,6 +43,8 @@ public class User implements UserDetails {
     @Column(name="updated_at")
     private Timestamp updated_at;
 
+    public User(){}
+
     public int getId() {
         return id;
     }
