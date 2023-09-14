@@ -1,8 +1,10 @@
 package com.rayandahmena.project_3.entity;
 
 import lombok.Data;
+import lombok.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 @Data
@@ -20,6 +22,8 @@ public class Message {
     @Column(name="user_id")
     private int user_id;
 
+    @NonNull
+    @Size(min=10)
     @Column(name="message", length = 2000)
     private String message;
 

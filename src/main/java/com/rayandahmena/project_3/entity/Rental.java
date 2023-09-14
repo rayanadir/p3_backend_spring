@@ -2,8 +2,10 @@ package com.rayandahmena.project_3.entity;
 
 import com.rayandahmena.project_3.entity.request.NewRentalRequest;
 import lombok.Data;
+import lombok.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 @Data
@@ -15,18 +17,23 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name",nullable = false, unique = true, length = 255)
+    @NonNull
+    @Column(name = "name",nullable = false, length = 255)
     private String name;
 
+    @NonNull
     @Column(name = "surface")
     private int surface;
 
+    @NonNull
     @Column(name = "price")
     private int price;
 
+    @NonNull
     @Column(name="picture", length = 255)
     private String picture;
 
+    @NonNull
     @Column(name="description", length = 2000)
     private String description;
 
@@ -39,15 +46,6 @@ public class Rental {
     @Column(name="updated_at")
     private Timestamp updated_at;
 
-
-    /*public Rental(NewRentalRequest rentalRequest, int owner_id){
-        this.name = rentalRequest.getName();
-        this.surface = rentalRequest.getSurface();
-        this.price = rentalRequest.getPrice();
-        this.picture = rentalRequest.getPicture();
-        this.description = rentalRequest.getDescription();
-        this.owner_id = owner_id;
-    }*/
 
     public int getId() {
         return id;

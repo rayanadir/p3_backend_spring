@@ -1,10 +1,14 @@
 package com.rayandahmena.project_3.entity;
 
 import lombok.Data;
+import lombok.NonNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,12 +22,18 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NonNull
+    @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}", flags = Pattern.Flag.CASE_INSENSITIVE)
     @Column(name="email" ,nullable = false, unique = true, length = 255)
     private String email;
 
+    @NonNull
+    @Size(min=3)
     @Column(name = "name", nullable = false,length = 255)
     private String name;
 
+    @NonNull
+    @Size(min=3)
     @Column(name="password",nullable = false, length = 255)
     private String password;
 
