@@ -46,6 +46,9 @@ public class Rental {
     @Column(name="updated_at")
     private Timestamp updated_at;
 
+    public Rental() {
+
+    }
 
     public int getId() {
         return id;
