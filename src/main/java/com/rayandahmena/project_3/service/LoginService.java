@@ -34,10 +34,6 @@ public class LoginService {
         String password = dto.getPassword();
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password));
         User user = userService.findByEmail(email);
-        String token = jwtGeneratorService.generateToken(user);
-        if(token!=""){
-            return token;
-        }
-        return null;
+        return jwtGeneratorService.generateToken(user);
     }
 }
