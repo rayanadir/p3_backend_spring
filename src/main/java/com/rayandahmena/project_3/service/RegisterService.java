@@ -18,16 +18,16 @@ import java.util.HashMap;
 public class RegisterService {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    JwtGeneratorService jwtGeneratorService;
+    private JwtGeneratorService jwtGeneratorService;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     /**
      * Register method, returns user registered token

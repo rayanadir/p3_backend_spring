@@ -16,13 +16,13 @@ import java.util.HashMap;
 public class LoginService {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    JwtGeneratorService jwtGeneratorService;
+    private JwtGeneratorService jwtGeneratorService;
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     /**
      * Login method, returns user logged token
