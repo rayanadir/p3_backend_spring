@@ -2,6 +2,7 @@ package com.rayandahmena.project_3.entity;
 
 import lombok.Data;
 import lombok.NonNull;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -26,8 +27,8 @@ public class Message {
     private int user_id;
 
     @NonNull
-    @Size(min=10)
-    @Column(name="message", length = 2000)
+    @Length(min = 10)
+    @Column(name="message")
     private String message;
 
     @Column(name="created_at")

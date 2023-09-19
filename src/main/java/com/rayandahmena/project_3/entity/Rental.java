@@ -21,7 +21,7 @@ public class Rental {
     private int id;
 
     @NonNull
-    @Column(name = "name",nullable = false, length = 255)
+    @Column(name = "name",nullable = false)
     private String name;
 
     @NonNull
@@ -33,11 +33,11 @@ public class Rental {
     private int price;
 
     @NonNull
-    @Column(name="picture", length = 255)
+    @Column(name="picture")
     private String picture;
 
     @NonNull
-    @Column(name="description", length = 2000)
+    @Column(name="description")
     private String description;
 
     @Column(name="owner_id", nullable = false)
